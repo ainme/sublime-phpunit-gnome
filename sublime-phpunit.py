@@ -39,34 +39,21 @@ class PhpunitTestCommand(sublime_plugin.WindowCommand):
         return phpunit_config_path
 
     def run_in_terminal(self, command):
-        settings = sublime.load_settings("Preferences.sublime-settings")
-        terminal_setting = settings.get('phpunit-sublime-terminal', 'Terminal')
-
-        osascript_command = 'osascript '
-
-        if terminal_setting == 'iTerm':
-            osascript_command += '"' + os.path.dirname(os.path.realpath(__file__)) + '/open_iterm.applescript"'
-            osascript_command += ' "' + command + '"'
-        else:
-            osascript_command += '"' + os.path.dirname(os.path.realpath(__file__)) + '/run_command.applescript"'
-            osascript_command += ' "' + command + '"'
-            osascript_command += ' "PHPUnit Tests"'
-
-        os.system(osascript_command)
+        file_name, phpunit_config_path, active_view, directory = self.get_paths()
+        os.system('gnome-terminal -e "bash ' + os.path.dirname(os.path.realpath(__file__)) + '/open_gnome_terminal.sh '+phpunit_config_path+' \''+command+'\' "')
 
 class RunPhpunitTestCommand(PhpunitTestCommand):
 
     def run(self, *args, **kwargs):
         file_name, phpunit_config_path, active_view, directory = self.get_paths()
 
-        self.run_in_terminal('cd ' + phpunit_config_path + ' && phpunit ' + file_name)
+        self.run_in_terminal('vendor/bin/phpunit ' + file_name)
 
 class RunAllPhpunitTestsCommand(PhpunitTestCommand):
 
     def run(self, *args, **kwargs):
-        file_name, phpunit_config_path, active_view, directory = self.get_paths()
 
-        self.run_in_terminal('cd ' + phpunit_config_path + ' && phpunit')
+        self.run_in_terminal('vendor/bin/phpunit')
 
 
 class RunSinglePhpunitTestCommand(PhpunitTestCommand):
@@ -76,14 +63,14 @@ class RunSinglePhpunitTestCommand(PhpunitTestCommand):
 
         current_function = self.get_current_function(active_view)
 
-        self.run_in_terminal('cd ' + phpunit_config_path + ' && phpunit ' + file_name + ' --filter ' + current_function)
+        self.run_in_terminal('vendor/bin/phpunit ' + file_name + ' --filter ' + current_function)
 
 class RunPhpunitTestsInDirCommand(PhpunitTestCommand):
 
     def run(self, *args, **kwargs):
         file_name, phpunit_config_path, active_view, directory = self.get_paths()
 
-        self.run_in_terminal('cd ' + phpunit_config_path + ' && phpunit ' + directory)
+        self.run_in_terminal('vendor/bin/phpunit ' + directory)
 
 class FindMatchingTestCommand(sublime_plugin.WindowCommand):
 
