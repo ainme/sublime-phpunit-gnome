@@ -1,4 +1,4 @@
-# Sublime PHPUnit - Gnome Terminal
+# Sublime PHPUnit - Ubuntu
 
 This is a clone of ```adamwathan/sublime-phpunit``` for Mac Os. The package is for Gnome Terminal and has been tested on Ubuntu 16.04 Sublime Text 3.
 
