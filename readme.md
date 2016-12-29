@@ -1,8 +1,8 @@
 # Sublime PHPUnit - Gnome Terminal
 
-This is a clone of adamwathan/sublime-phpunit for Mac Os. The package is for Gnome Terminal and has been tested on Ubuntu 16.04 Sublime Text 3.
+This is a clone of ```adamwathan/sublime-phpunit``` for Mac Os. The package is for Gnome Terminal and has been tested on Ubuntu 16.04 Sublime Text 3.
 
-Everything is similar to the original clone. no need to add "phpunit-sublime-terminal" as its just for gnome terminal. 
+Everything is similar to the original package. No need to add "phpunit-sublime-terminal" as its just for gnome terminal. 
 
 
 Convenient Sublime Text commands for running your PHPUnit tests. Scans up the directory tree to find the closest phpunit.xml file and runs phpunit from there. If it can't find one, it just runs phpunit from `/`.
