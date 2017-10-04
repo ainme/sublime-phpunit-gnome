@@ -33,10 +33,10 @@ To run Open Sublime command pallette (Ctrl + Shift + P) and type 'run' to see 'S
 
 With this package
 
---- Run All Tests
---- Run This Directory
---- Run This File
---- Run This Method
+- Run All Tests
+- Run This Directory
+- Run This File
+- Run This Method
 
 To close the terminal after the tests have been finished press `enter`.
 
